@@ -1,0 +1,2 @@
+[console_scripts]
+arxiv-voice = arxiv_voice.cli:main

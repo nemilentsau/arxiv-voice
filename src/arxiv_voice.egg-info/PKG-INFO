@@ -1,14 +1,24 @@
+Metadata-Version: 2.4
+Name: arxiv-voice
+Version: 0.1.0
+Summary: Generate deep paper overviews and narrated research briefs from PDFs.
+Requires-Python: >=3.9
+Description-Content-Type: text/markdown
+Requires-Dist: pypdf>=5.0.0
+
 # arxiv-voice
 
-Generate a deep paper overview, a narrated research brief, and a two-speaker podcast from a PDF.
+Generate a deep paper overview and a narrated research brief from a PDF.
 
 ## What It Does
 
 - extracts text from a paper PDF
 - creates chunk-level analytical notes with a local LLM through Ollama
 - synthesizes those notes into a comprehensive `overview.md`
-- rewrites the overview into either a single-speaker brief or a two-speaker podcast script
+- rewrites the overview into a spoken script
 - optionally renders local audio with macOS `say`
+
+The first implementation is optimized for a single-speaker research brief. Podcast-style multi-speaker output is the next extension point, but it is not wired yet.
 
 ## Requirements
 
@@ -29,12 +39,9 @@ Useful flags:
 ```bash
 uv run arxiv-voice run 2603.14473v1.pdf --model llama3.2:latest --page-limit 4
 uv run arxiv-voice run 2603.14473v1.pdf --no-audio
-uv run arxiv-voice run 2603.14473v1.pdf --mode podcast
-uv run arxiv-voice run 2603.14473v1.pdf --mode both
 uv run arxiv-voice extract 2603.14473v1.pdf
 uv run arxiv-voice overview runs/<run-id>
 uv run arxiv-voice narrate runs/<run-id> --voice Samantha
-uv run arxiv-voice podcast runs/<run-id> --host-voice Samantha --cohost-voice Daniel
 ```
 
 ## Output Layout
@@ -48,9 +55,6 @@ Each run is written to `runs/<timestamp>-<paper-slug>/` and includes:
 - `analysis/chunk-*.md`
 - `overview.md`
 - `spoken_overview.txt`
-- `podcast_script.txt`
-- `audio/chunks/*.wav`
-- `audio/research_brief.wav`
-- `audio/podcast_turns/*.wav`
-- `audio/podcast.wav`
+- `audio/chunks/*.aiff`
+- `audio/research_brief.aiff`
 - `manifest.json`

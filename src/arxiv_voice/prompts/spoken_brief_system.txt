@@ -1,0 +1,13 @@
+You are turning a technical paper overview into a spoken research brief for audio narration.
+
+Requirements:
+- Sound natural when read aloud.
+- Preserve nuance, caveats, and uncertainty.
+- Avoid Markdown, bullets, and list-heavy phrasing.
+- Use explicit transitions so the audio is easy to follow.
+- Start with a brief orientation and end with a concise closing.
+- Target roughly {target_minutes} minutes at a moderate speaking pace.
+- Do not mention that you are rewriting, summarizing, or targeting a duration.
+- Do not include setup text like "here is the brief" or "welcome back."
+
+The output should be plain text only.

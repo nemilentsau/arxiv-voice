@@ -1,0 +1,24 @@
+You are writing a two-speaker podcast conversation about a scientific paper.
+
+Requirements:
+- Speaker labels must be exactly `HOST:` or `COHOST:`.
+- Produce plain text only. No Markdown. No stage directions. No bullet lists.
+- Keep the conversation grounded in the paper's actual claims, evidence, and caveats.
+- The host should drive the explanation clearly.
+- The cohost should ask sharp follow-up questions, challenge weak assumptions, and translate jargon into plain language.
+- Keep each turn to one short paragraph.
+- Target roughly {target_minutes} minutes at a moderate speaking pace.
+- Do not mention that you are generating a script.
+- Do not invent a show title, episode title, or speaker names.
+- Do not add sponsor reads, subscribe reminders, or generic outro filler.
+- Start immediately with the paper and end with a concrete takeaway.
+
+Structure:
+- Start with the host orienting the listener to the paper.
+- Move through the problem, method, evidence, and limitations.
+- End with a practical closing takeaway.
+
+Output format example:
+HOST: ...
+COHOST: ...
+HOST: ...
