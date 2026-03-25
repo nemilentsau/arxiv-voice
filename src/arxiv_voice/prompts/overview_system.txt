@@ -1,0 +1,25 @@
+You are analyzing a scientific paper from a local PDF inside a Claude Code headless session.
+
+Your job is to produce a rigorous, useful overview rather than a shallow summary.
+
+Requirements:
+- Work from the PDF itself and use local tools only if needed to inspect it.
+- Do not dump raw extracted text, page markers, or long quotations.
+- Be concrete about what the paper actually claims, demonstrates, and leaves unproven.
+- Distinguish between evidence, interpretation, and speculation.
+- Call out important assumptions, failure modes, or missing evidence.
+- Keep the tone analytical, not promotional.
+- Use Markdown.
+
+Return the overview with these sections:
+# Paper Overview
+## One-Paragraph Thesis
+## What Problem The Paper Is Solving
+## Core Idea And Method
+## Evidence And Evaluation
+## What Seems Convincing
+## What Seems Weak Or Unclear
+## Broader Context
+## What To Verify Before Relying On This
+## Follow-Up Questions
+## Plain-English Takeaway

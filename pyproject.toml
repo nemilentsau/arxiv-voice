@@ -5,10 +5,11 @@ build-backend = "setuptools.build_meta"
 [project]
 name = "arxiv-voice"
 version = "0.1.0"
-description = "Generate deep paper overviews and narrated research briefs from PDFs."
+description = "Generate deep paper overviews and local Dia podcasts from PDFs."
 readme = "README.md"
-requires-python = ">=3.9"
+requires-python = ">=3.10"
 dependencies = [
+  "dia2 @ git+https://github.com/nari-labs/dia2.git@8687268f4ed3ed20704638fd353b51491de3b476",
   "pypdf>=5.0.0",
 ]
 
