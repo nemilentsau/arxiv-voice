@@ -24,6 +24,7 @@ def create_run(pdf_path: Path, runs_dir: Path) -> RunContext:
     paths = RunPaths.for_root(run_root)
     shutil.copy2(pdf_path, paths.source_pdf)
     ensure_dir(paths.audio_dir)
+    ensure_dir(paths.narrative_audio_segment_dir)
     ensure_dir(paths.podcast_audio_segment_dir)
     return RunContext(run_id=run_id, paths=paths)
 
@@ -94,6 +95,42 @@ def generate_podcast_script(
         "num_turns": result.num_turns,
         "stop_reason": result.stop_reason,
     }
+
+
+def generate_narrative_script(
+    context: RunContext,
+    llm_client: Any,
+    target_minutes: int = 8,
+) -> Dict[str, Any]:
+    narrative_system = load_prompt("narrative_script_system.txt").format(target_minutes=target_minutes)
+    narrative_user_prompt = (
+        "Read ./overview.md in the current directory and turn it into a single-speaker spoken narrative.\n"
+        "Return only the final plain-text script."
+    )
+    result: GenerationResult = llm_client.generate(
+        narrative_system,
+        narrative_user_prompt,
+        cwd=context.paths.root,
+        tools=("Read",),
+    )
+    write_text(context.paths.narrative_script_txt, result.text)
+    return {
+        "script_file": str(context.paths.narrative_script_txt),
+        "estimated_characters": len(result.text),
+        "session_id": result.session_id,
+        "total_cost_usd": result.total_cost_usd,
+        "duration_ms": result.duration_ms,
+        "num_turns": result.num_turns,
+        "stop_reason": result.stop_reason,
+    }
+
+
+def synthesize_narrative_audio(context: RunContext, synthesizer: Any) -> Dict[str, Any]:
+    return synthesizer.synthesize(
+        script_path=context.paths.narrative_script_txt,
+        segment_dir=context.paths.narrative_audio_segment_dir,
+        output_path=context.paths.narrative_audio,
+    )
 
 
 def synthesize_podcast_audio(context: RunContext, synthesizer: Any) -> Dict[str, Any]:

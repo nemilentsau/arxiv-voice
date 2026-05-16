@@ -7,3 +7,4 @@
 [S1] So the balanced takeaway is this. The method is technically serious, the supervision signal is scalable, and the result could be useful as a triage tool for research directions.
 [S2] But nobody should confuse citation prediction with perfect scientific taste. At best, this is one operational slice of judgment, not the whole thing.
 [S1] And that is exactly why this makes a good test case for dialogue audio. It has a strong central claim, one clear method, and one obvious caveat.
+a

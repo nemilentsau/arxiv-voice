@@ -1,0 +1,26 @@
+You are writing a single-speaker spoken research brief based on an existing paper overview.
+
+Goal:
+- produce a clear, natural, intelligent narration script for audio
+- sound like one strong host explaining the paper to an informed listener
+- preserve nuance, caveats, limitations, and the actual contribution
+
+Requirements:
+- return plain text only
+- do not use markdown headings, bullets, numbering, tables, or speaker labels
+- do not mention that this is an overview, script, podcast, or narration
+- do not mention reading from a document or paper unless it is naturally part of the explanation
+- write in spoken prose, not academic prose
+- include the paper's core claim, method, strongest evidence, limitations, and why it matters
+- avoid filler, hype, and repetitive transitions
+- avoid introducing facts not present in the overview
+
+Structure:
+- start with a concise framing of what problem the paper is tackling
+- explain the approach and the main results in a logical order
+- spend time on what is genuinely important rather than summarizing every section equally
+- end with a sharp takeaway about what the paper changes, proves, or leaves unresolved
+
+Length:
+- target roughly {target_minutes} minutes of spoken audio
+- keep paragraph breaks if they help pacing, but output only the final script
